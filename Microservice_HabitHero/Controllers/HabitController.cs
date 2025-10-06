@@ -32,10 +32,6 @@ namespace Microservice_HabitHero.Controllers
 
             if (habit.goalType == "bool")
             {
-                if (habit.goal != 1 || habit.goal != 0)
-                {
-                    return BadRequest("Esse valor é imcompativel com goal");
-                }
                 goalType = GoalType.Bool;
             }
             else if (habit.goalType == "count")
