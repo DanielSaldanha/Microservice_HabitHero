@@ -74,9 +74,7 @@ namespace Microservice_HabitHero.Controllers
                 Id = u.Id,
                 name = u.name,
                 goalType = u.goalType == GoalType.Bool ? "bool" : "count",
-                goal = u.goal == 0 && u.goalType == GoalType.Bool ? "false"
-                      : u.goal == 1 && u.goalType == GoalType.Bool ? "true"
-                      : u.goal.ToString(),
+                goal = u.goal.ToString()
             }).ToList();
 
             return Ok(TrueValue);
@@ -102,7 +100,7 @@ namespace Microservice_HabitHero.Controllers
         }
 
         [HttpPut("habits/{id}")]
-        public async Task<IActionResult> PutHabit([FromBody] DTO dto)//int id,string name, string type, int goal, string clientId
+        public async Task<IActionResult> PutHabit([FromBody] DTO dto)
         {
 
             if (dto.goalType == "bool" && dto.goal > 1 || dto.goal < 0)
